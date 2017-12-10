@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { Params, ActivatedRoute } from '@angular/router';
@@ -44,7 +44,8 @@ export class DishdetailComponent implements OnInit {
     constructor(private dishservice: DishService,
         private route: ActivatedRoute,
         private location: Location,
-        private fb: FormBuilder){
+        private fb: FormBuilder,
+        @Inject('BaseURL') private BaseURL){
             this.createForm();
         }
 
@@ -100,7 +101,7 @@ export class DishdetailComponent implements OnInit {
         this.comment = this.commentForm.value;
         this.comment.date = new Date().toISOString();
         console.log(this.comment);
-        this.dishservice.addComment(this.dish.id, this.comment);
+        //DISHES[this.dish.id].comments.push(this.comment);
         this.commentForm.reset();
     }
 
