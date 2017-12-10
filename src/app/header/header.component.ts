@@ -22,8 +22,8 @@ export class HeaderComponent implements OnInit {
         private dialog: MdDialog) { }
 
     ngOnInit() {
-        this.dishservice.getFeaturedDish().then(dish => this.dish = dish);
-        this.promotionservice.getFeaturedPromotion().then(promotion => this.promotion = promotion);
+        this.dishservice.getFeaturedDish().subscribe(dish => this.dish = dish);
+        this.promotionservice.getFeaturedPromotion().subscribe(promotion => this.promotion = promotion);
     }
 
     openLoginForm(){
