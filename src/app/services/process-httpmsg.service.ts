@@ -12,8 +12,8 @@ export class ProcessHTTPMsgService {
 
   public extractData(res: Response){
       let body = res.json();
-      console.log(body);
-      return body || { };
+      //console.log(body);
+      return body || {};
   }
 
   public handleError(error: Response | any){
