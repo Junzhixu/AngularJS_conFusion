@@ -8,11 +8,13 @@ import { ProcessHTTPMsgService } from './process-httpmsg.service';
 import { Observable } from 'rxjs/Observable';
 
 import { RestangularModule, Restangular } from 'ngx-restangular';
+import { RestangularConfigFactory } from '../shared/restConfig';
 
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/delay';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class DishService {
@@ -35,8 +37,7 @@ export class DishService {
 
   getDishIds(): Observable<number[]> {
     return this.getDishes()
-      .map(dishes => { return dishes.map(dish => dish.id) })
-      .catch(error => { return error; } );
+      .map(dishes => { return dishes.map(dish => dish.id) });
   }
 
 
